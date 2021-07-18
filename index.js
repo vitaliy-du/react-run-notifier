@@ -2,7 +2,7 @@ import * as Lib from "run-notifier";
 import * as React from "react";
 
 export function Notifier() {
-	Lib.Notifier.constructor.call(this);
+	Lib.Notifier.call(this);
 
 	this.connectListener = function (listener, notice, silent) {
 		this.addListener(listener, notice, silent);
@@ -15,8 +15,9 @@ export function Notifier() {
 		};
 	}
 
+	var superNotify = this.notify;
 	this.notify = function (listener, target, params) {
-		super.notify(listener, target, params);
+		superNotify(listener, target, params);
 		if (listener instanceof React.Component) target.extra.silent || listener.forceUpdate();
 	};
 }
