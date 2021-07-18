@@ -28,9 +28,12 @@ class TestControl extends React.Component {
 		super(params);
 
 		notifier.connectListener(this, listener3); // Not required to call removeListener
+	}
+
+	componentDidMount() {
 		notifier.signal('test D');
 		// console --->>> listener 3. test D
-	}
+    }
 
 	render() {
 		return 'test';
