@@ -1,0 +1,36 @@
+{
+	"name": "react-run-notifier",
+	"version": "1.1.1",
+	"description": "Allows you to notify listeners. Supported react components.",
+	"main": "index.js",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vitaliy-du/react-run-notifier.git"
+	},
+	"author": "Vitaliy Dyukar",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/vitaliy-du/react-run-notifier/issues"
+	},
+	"homepage": "https://github.com/vitaliy-du/react-run-notifier#readme",
+	"types": "index.d.ts",
+	"keywords": [
+		"listen",
+		"listener",
+		"notification",
+		"notifier",
+		"notice",
+		"notify",
+		"react",
+		"subscribe",
+		"subscriber"
+	],
+	"dependencies": {
+		"run-notifier": "^1.1.2"
+	},
+	"peerDependencies": {
+		"react": "^16.8.0",
+		"react-dom": "^16.8.0"
+	}
+}
