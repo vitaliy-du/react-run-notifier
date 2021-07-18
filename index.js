@@ -7,12 +7,14 @@ export function Notifier() {
 	this.connectListener = function (listener, notice, silent) {
 		this.addListener(listener, notice, silent);
 
-		const nextComponentWillUnmount = listener.componentWillUnmount;
-		listener.componentWillUnmount = (...args) => {
-			this.removeListener(listener);
-			listener.componentWillUnmount = nextComponentWillUnmount;
-			nextComponentWillUnmount && nextComponentWillUnmount(...args);
-		};
+		if (listener instanceof React.Component) {
+			const nextComponentWillUnmount = listener.componentWillUnmount;
+			listener.componentWillUnmount = (...args) => {
+				this.removeListener(listener);
+				listener.componentWillUnmount = nextComponentWillUnmount;
+				nextComponentWillUnmount && nextComponentWillUnmount(...args);
+			};
+		}
 	}
 
 	var superNotify = this.notify;
