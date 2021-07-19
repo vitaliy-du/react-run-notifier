@@ -23,7 +23,19 @@ const listener3 = (params: string) => console.log('listener 3.', params);
 
 const notifier: Notifier<string> = new Notifier();
 
-class TestControl extends React.Component {
+const TestX = () => {
+    const [signalParams, setSignalParams] = React.useState(null);
+    React.useEffect(() => {
+        notifier.addListener(setSignalParams);
+        notifier.signal('test X');
+        return () => notifier.removeListener(setSignalParams);
+    }, []);
+    return signalParams; // <<<--- test X
+};
+
+// or
+
+class TestY extends React.Component {
     constructor(params: any) {
         super(params);
 
@@ -31,8 +43,8 @@ class TestControl extends React.Component {
     }
 
     componentDidMount() {
-        notifier.signal('test D');
-        // console --->>> listener 3. test D
+        notifier.signal('test Y');
+        // console --->>> listener 3. test Y
     }
 
     render() {
